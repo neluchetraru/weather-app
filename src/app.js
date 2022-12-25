@@ -23,7 +23,7 @@ app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
     res.render('index', {
-        title: 'Weather',
+        title: 'Weather App',
         name: 'Ion'
     })
 })
@@ -45,9 +45,9 @@ app.get('/weather', (req, res) => {
                 error
             })
         }
-
         forecast(latitude, longitude, (error, forecastData) => {
             if (error) {
+
                 return res.send({
                     error
                 })
@@ -62,27 +62,7 @@ app.get('/weather', (req, res) => {
     })
 })
 
-app.get('/about', (req, res) => {
-    res.render('about', {
-        title: 'About Me',
-        name: 'Ion'
-    })
-})
 
-app.get('/help', (req, res) => {
-    res.render('help', {
-        title: 'Help',
-        name: 'Ion'
-    })
-})
-
-app.get('/help/*', (req, res) => {
-    res.render('404', {
-        title: '404',
-        name: 'Ion',
-        errorMessage: 'Help page not found'
-    })
-})
 
 app.get('*', (req, res) => {
     res.render('404', {
